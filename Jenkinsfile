@@ -38,10 +38,13 @@ pipeline {
         // directory. This resolves "permission denied" errors on
         // terraform.tfstate.d/<env>/terraform.tfstate.backup
         stage('Fix Permissions') {
-            steps {
-                sh 'mkdir -p terraform.tfstate.d/dev'
-            }
+    steps {
+        sh '''
+        mkdir -p terraform.tfstate.d/dev
+        chmod -R 777 terraform.tfstate.d
+        '''
         }
+    }
 
         // ── Terraform Init ────────────────────────────────────
         stage('Terraform Init') {
