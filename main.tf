@@ -57,7 +57,7 @@ resource "random_id" "suffix" {
   byte_length = 4
 }
 
-module "s3_bucket" { 
+module "s3_bucket" {
   source = "git::https://github.com/Telishahid/terraform-module-s3.git"
 
   bucket_name = "${local.name_prefix}-${var.bucket_suffix}-${random_id.suffix.hex}"
