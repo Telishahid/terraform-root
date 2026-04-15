@@ -39,11 +39,7 @@ pipeline {
         // terraform.tfstate.d/<env>/terraform.tfstate.backup
         stage('Fix Permissions') {
             steps {
-                sh """
-                   sudo mkdir -p terraform.tfstate.d/${params.ENVIRONMENT}
-                   sudo chmod -R 777 terraform.tfstate.d/
-                    echo "✅ State directory permissions fixed"
-                """
+                sh 'mkdir -p terraform.tfstate.d/dev'
             }
         }
 
