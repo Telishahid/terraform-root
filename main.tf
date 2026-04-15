@@ -53,10 +53,14 @@ module "ec2_instances" {
 }
 
 # ── S3 Bucket ─────────────────────────────────────────────────────────
-module "s3_bucket" {
+resource "random_id" "suffix" {
+  byte_length = 4
+}
+
+module "s3_bucket" { 
   source = "git::https://github.com/Telishahid/terraform-module-s3.git"
 
-  bucket_name = "${local.name_prefix}-${var.bucket_suffix}"
+  bucket_name = "${local.name_prefix}-${var.bucket_suffix}-${random_id.suffix.hex}"
   environment = var.environment
   tags        = merge(local.common_tags, { Purpose = "storage" })
 }
