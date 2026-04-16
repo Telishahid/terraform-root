@@ -8,12 +8,22 @@ pipeline {
     agent any
 
     parameters {
-        choice(
-            name: 'ENVIRONMENT',
-            choices: ['dev', 'uat', 'prod'],
-            description: 'Select the environment to run Terraform against'
-        )
-    }
+    choice(
+        name: 'ENV',
+        choices: ['dev', 'uat', 'prod'],
+        description: 'Select Environment'
+    )
+    choice(
+        name: 'ACTION',
+        choices: ['plan', 'apply', 'destroy'],
+        description: 'Select Terraform Action'
+    )
+    string(
+        name: 'BRANCH',
+        defaultValue: 'main',
+        description: 'Git branch'
+    )
+}
 
     environment {
    //     AWS_ACCESS_KEY_ID     = credentials('aws-access-key-id')
