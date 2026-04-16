@@ -56,8 +56,6 @@ stages {
         }
     }
 }
-
-}
 post {
         failure {
             script {
@@ -66,3 +64,5 @@ post {
             }
         }
     }
+
+}
