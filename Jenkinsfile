@@ -13,11 +13,6 @@ pipeline {
         choices: ['dev', 'uat', 'prod'],
         description: 'Select Environment'
     )
-    choice(
-        name: 'ACTION',
-        choices: ['plan', 'apply', 'destroy'],
-        description: 'Select Terraform Action'
-    )
     string(
         name: 'BRANCH',
         defaultValue: 'main',
