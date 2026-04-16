@@ -25,7 +25,7 @@ stages {
         steps {
             checkout scmGit(
                 branches: [[name: "*/${params.BRANCH}"]],
-                userRemoteConfigs: [[url: 'https://github.com/AmarDahiwalkar/Terraform-Automation.git']]
+                userRemoteConfigs: [[url: 'https://github.com/Telishahid/terraform-root.git']]
             )
         }
     }
@@ -42,7 +42,7 @@ stages {
     stage('Terraform Action') {
         steps {
             script {
-                def tfvarsFile = "env/${params.ENV}.tfvars"
+                def tfvarsFile = "envs/${params.ENV}.tfvars"
 
                 if (params.ACTION == 'plan') {
                     echo "Running PLAN for ${params.ENV}"
