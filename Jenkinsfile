@@ -58,3 +58,11 @@ stages {
 }
 
 }
+post {
+        failure {
+            script {
+                def envName = params.ENV ?: "unknown"
+                echo "❌ Pipeline failed for ${envName.toUpperCase()}"
+            }
+        }
+    }
